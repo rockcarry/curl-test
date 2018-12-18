@@ -39,6 +39,8 @@ int http_post_send(char *token, char *uid, char *sid, char *point, char *devname
     curl_easy_setopt(curl, CURLOPT_WRITEDATA    , &membuf);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, FALSE);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+    curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
+    curl_easy_setopt(curl, CURLOPT_TIMEOUT, 10);
     ret = curl_easy_perform(curl);
     curl_easy_cleanup(curl);
     return ret;
